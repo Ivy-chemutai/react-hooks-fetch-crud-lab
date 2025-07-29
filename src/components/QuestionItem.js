@@ -13,7 +13,6 @@ function QuestionItem({ question, onDeleteQuestion, onUpdateQuestion }) {
   function handleCorrectAnswerChange(event) {
     const newCorrectIndex = parseInt(event.target.value);
     
-    // Update state optimistically
     onUpdateQuestion({ ...question, correctIndex: newCorrectIndex });
     
     fetch(`http://localhost:4000/questions/${id}`, {
