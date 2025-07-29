@@ -3,22 +3,23 @@ import React from "react";
 function QuestionItem({ question, onDeleteQuestion, onUpdateQuestion }) {
   const { id, prompt, answers, correctIndex } = question;
 
-  function handleDelete() {
+  function handleDeleteClick() {
     fetch(`http://localhost:4000/questions/${id}`, {
-      method: "DELETE"
-    })
-    .then(() => onDeleteQuestion(id));
+      method: "DELETE",
+    }).then(() => onDeleteQuestion(id));
   }
 
-  function handleCorrectAnswerChange(event) {
+  function handleAnswerChange(event) {
     const newCorrectIndex = parseInt(event.target.value);
     
     onUpdateQuestion({ ...question, correctIndex: newCorrectIndex });
     
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ correctIndex: newCorrectIndex })
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ correctIndex: newCorrectIndex }),
     });
   }
 
@@ -34,11 +35,11 @@ function QuestionItem({ question, onDeleteQuestion, onUpdateQuestion }) {
       <h5>Prompt: {prompt}</h5>
       <label>
         Correct Answer:
-        <select value={correctIndex} onChange={handleCorrectAnswerChange}>
+        <select value={correctIndex} onChange={handleAnswerChange}>
           {options}
         </select>
       </label>
-      <button onClick={handleDelete}>Delete Question</button>
+      <button onClick={handleDeleteClick}>Delete Question</button>
     </li>
   );
 }

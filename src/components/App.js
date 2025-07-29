@@ -9,29 +9,38 @@ function App() {
 
   useEffect(() => {
     fetch("http://localhost:4000/questions")
-      .then(r => r.json())
-      .then(setQuestions);
+      .then((r) => r.json())
+      .then((questions) => setQuestions(questions));
   }, []);
 
-  function addQuestion(newQuestion) {
+  function handleAddQuestion(newQuestion) {
     setQuestions([...questions, newQuestion]);
   }
 
-  function deleteQuestion(id) {
-    setQuestions(questions.filter(q => q.id !== id));
+  function handleDeleteQuestion(id) {
+    setQuestions(questions.filter((q) => q.id !== id));
   }
 
-  function updateQuestion(updatedQuestion) {
-    setQuestions(questions.map(q => q.id === updatedQuestion.id ? updatedQuestion : q));
+  function handleUpdateQuestion(updatedQuestion) {
+    setQuestions(
+      questions.map((q) =>
+        q.id === updatedQuestion.id ? updatedQuestion : q
+      )
+    );
   }
 
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? 
-        <QuestionForm onAddQuestion={addQuestion} /> : 
-        <QuestionList questions={questions} onDeleteQuestion={deleteQuestion} onUpdateQuestion={updateQuestion} />
-      }
+      {page === "Form" ? (
+        <QuestionForm onAddQuestion={handleAddQuestion} />
+      ) : (
+        <QuestionList
+          questions={questions}
+          onDeleteQuestion={handleDeleteQuestion}
+          onUpdateQuestion={handleUpdateQuestion}
+        />
+      )}
     </main>
   );
 }
