@@ -13,13 +13,14 @@ function QuestionItem({ question, onDeleteQuestion, onUpdateQuestion }) {
   function handleCorrectAnswerChange(event) {
     const newCorrectIndex = parseInt(event.target.value);
     
+    // Update state optimistically
+    onUpdateQuestion({ ...question, correctIndex: newCorrectIndex });
+    
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ correctIndex: newCorrectIndex })
-    })
-    .then(r => r.json())
-    .then(onUpdateQuestion);
+    });
   }
 
   const options = answers.map((answer, index) => (
@@ -34,7 +35,7 @@ function QuestionItem({ question, onDeleteQuestion, onUpdateQuestion }) {
       <h5>Prompt: {prompt}</h5>
       <label>
         Correct Answer:
-        <select defaultValue={correctIndex} onChange={handleCorrectAnswerChange}>
+        <select value={correctIndex} onChange={handleCorrectAnswerChange}>
           {options}
         </select>
       </label>
