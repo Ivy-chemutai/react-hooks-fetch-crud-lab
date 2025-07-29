@@ -1,0 +1,35 @@
+
+> react-hooks-fetch-crud-lab@0.1.0 server
+> json-server --watch db.json --port=4000
+
+
+  \{^_^}/ hi!
+
+  Loading db.json
+  Done
+
+  Resources
+  http://localhost:4000/questions
+
+  Home
+  http://localhost:4000
+
+  Type s + enter at any time to create a snapshot of the database
+  Watching...
+
+[0mGET /questions [32m200[0m 21.177 ms - 2225[0m
+[0mGET /questions [32m200[0m 7.071 ms - -[0m
+[0mPOST /questions [32m201[0m 43.866 ms - 117[0m
+[0mPOST /questions [32m201[0m 9.034 ms - 117[0m
+[0mPOST /questions [32m201[0m 8.227 ms - 117[0m
+[0mPOST /questions [32m201[0m 6.543 ms - 117[0m
+[0mPOST /questions [32m201[0m 5.257 ms - 117[0m
+[0mPOST /questions [32m201[0m 5.646 ms - 117[0m
+[0mPOST /questions [32m201[0m 6.223 ms - 117[0m
+[0mDELETE /questions/1 [32m200[0m 9.784 ms - 2[0m
+[0mPOST /questions [32m201[0m 7.062 ms - 102[0m
+[0mPOST /questions [32m201[0m 8.446 ms - 102[0m
+[0mPOST /questions [32m201[0m 7.223 ms - 124[0m
+[0mPOST /questions [32m201[0m 7.275 ms - 124[0m
+[0mPOST /questions [32m201[0m 7.750 ms - 124[0m
+[0mPOST /questions [32m201[0m 7.042 ms - 124[0m
